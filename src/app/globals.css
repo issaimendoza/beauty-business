@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffcfa;
+  --foreground: #302326;
+  --card: #ffffff;
+  --card-foreground: #302326;
+  --primary: #9f5965;
+  --primary-foreground: #ffffff;
+  --secondary: #f7edeb;
+  --secondary-foreground: #643f45;
+  --muted: #f8f3f1;
+  --muted-foreground: #6f5d60;
+  --accent: #c98f87;
+  --accent-foreground: #4c3032;
+  --destructive: oklch(0.59 0.22 25);
+  --border: #eadbd8;
+  --input: #dfccc8;
+  --ring: #9f5965;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* { border-color: var(--border); }
+body { background: var(--background); color: var(--foreground); }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
