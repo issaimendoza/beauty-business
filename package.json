@@ -15,6 +15,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate.ts",
     "db:seed": "tsx scripts/seed.ts",
+    "db:bootstrap": "tsx scripts/bootstrap.ts",
     "auth:provision": "tsx scripts/provision-user.ts",
     "db:studio": "drizzle-kit studio",
     "db:check": "drizzle-kit check"

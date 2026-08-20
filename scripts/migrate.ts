@@ -1,19 +1,18 @@
-import { config } from "dotenv";
-import { migrate } from "drizzle-orm/postgres-js/migrator";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 import { getDatabaseEnvironment } from "../src/shared/infrastructure/config/env";
+import { applyMigrations } from "./database-setup";
+import { loadScriptEnvironment } from "./load-env";
 
-config({ path: ".env.local", quiet: true });
-config({ quiet: true });
+loadScriptEnvironment();
 const environment = getDatabaseEnvironment();
 const connection = postgres(environment.DATABASE_URL, { max: 1 });
 const database = drizzle(connection);
 
 async function main() {
   try {
-    await migrate(database, { migrationsFolder: "drizzle" });
+    await applyMigrations(database);
     console.info("Migraciones aplicadas correctamente.");
   } finally {
     await connection.end();

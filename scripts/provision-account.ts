@@ -46,13 +46,12 @@ function readBootstrapSlot(
   const email = env[`BOOTSTRAP_USER_${slot}_EMAIL`];
   const name = env[`BOOTSTRAP_USER_${slot}_NAME`];
   const password = env[`BOOTSTRAP_USER_${slot}_PASSWORD`];
-  const definedCount = [email, name, password].filter((value) => value && value.length > 0).length;
 
-  if (definedCount === 0) {
+  if (!email && !name && !password) {
     return undefined;
   }
 
-  if (definedCount !== 3) {
+  if (!email || !name || !password) {
     throw new Error(
       `BOOTSTRAP_USER_${slot}_EMAIL, BOOTSTRAP_USER_${slot}_NAME y BOOTSTRAP_USER_${slot}_PASSWORD deben definirse juntas.`,
     );

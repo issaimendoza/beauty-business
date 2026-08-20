@@ -79,7 +79,7 @@ Reglas:
 - HTTPS es obligatorio para cualquier publicación;
 - cada operación protegida valida sesión del lado servidor; el middleware o una redirección visual no sustituyen esa validación;
 - errores de login genéricos y throttling temporal para impedir enumeración y reducir fuerza bruta;
-- credenciales aprovisionadas mediante un comando administrativo seguro, nunca mediante un seed con secretos versionados;
+- credenciales aprovisionadas mediante un comando administrativo seguro (`auth:provision` interactivo o `db:bootstrap` desde un env gitignored), nunca mediante un seed con secretos versionados;
 - no se implementa criptografía, hashing ni un protocolo de sesión propio si una librería mantenida cubre la necesidad.
 
 El detalle funcional y las pruebas obligatorias están en `features/FND-002-basic-access.md`.
@@ -110,7 +110,7 @@ src/
     └── presentation/
 
 drizzle/                 # migraciones versionadas
-scripts/                 # migración, seed y aprovisionamiento
+scripts/                 # migración, seed, bootstrap y aprovisionamiento
 tests/                   # dominio, aplicación, integración, componentes y E2E
 ```
 

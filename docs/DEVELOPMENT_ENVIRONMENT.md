@@ -73,10 +73,11 @@ Comandos implementados:
 ```bash
 npm run db:migrate
 npm run db:seed
+npm run db:bootstrap
 npm run db:check
 ```
 
-Los scripts cargan primero `.env.local` y requieren únicamente `DATABASE_URL`; migrar o sembrar catálogos no depende del secreto de autenticación. El seed es idempotente y no crea usuarios ni contiene credenciales.
+Los scripts cargan primero `.env.local` y requieren únicamente `DATABASE_URL`; migrar o sembrar catálogos no depende del secreto de autenticación. El seed es idempotente y no crea usuarios ni contiene credenciales. Todos aceptan `--env-file=ruta` para apuntar a otro archivo gitignored, por ejemplo `.env.production`.
 
 Las dos cuentas se aprovisionan por separado en una terminal interactiva:
 
@@ -85,6 +86,14 @@ npm run auth:provision -- --email=persona@ejemplo.com --name="Nombre visible"
 ```
 
 La contraseña se solicita y confirma sin eco. Repetir el comando para el mismo correo actualiza intencionalmente sus credenciales.
+
+Para preparar una base ya creada (migraciones, catálogos y hasta dos cuentas leídas del env) sin escribir secretos en la línea de comandos:
+
+```bat
+npm run db:bootstrap -- --env-file=.env.production
+```
+
+En CMD también puede usarse `scripts\bootstrap.cmd`. Las variables `BOOTSTRAP_USER_*` solo las lee ese script administrativo; no forman parte de la configuración de runtime de Next.js.
 
 ## Nuevas dependencias
 

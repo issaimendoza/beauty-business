@@ -189,6 +189,7 @@ No reexportar un símbolo a través de otra capa para ocultar una dependencia pr
 - Aplicar throttling temporal y progresivo a intentos repetidos sin crear un bloqueo permanente explotable como denegación de servicio.
 - Nunca registrar contraseñas, hashes, cookies, tokens ni cuerpos de autenticación.
 - Credenciales reales no se versionan ni se pasan como argumentos visibles del shell.
+- Las variables `BOOTSTRAP_USER_*` solo las leen scripts administrativos; no entran al esquema de `env.ts` ni al runtime de Next.js.
 
 ## Ambiente local e infraestructura
 

@@ -27,13 +27,13 @@ La URL será pública; los datos y operaciones no lo serán. La UI protegida no 
 
 Las cuentas se crean mediante un comando administrativo explícito que:
 
-- solicita la contraseña sin mostrarla ni dejarla en el historial del shell;
+- solicita la contraseña sin mostrarla ni dejarla en el historial del shell, o la lee de un archivo gitignored durante el bootstrap productivo;
 - guarda únicamente su hash con salt;
 - no imprime la contraseña, el hash ni secretos;
 - permite actualizar la contraseña de una cuenta existente de forma intencional;
 - no utiliza un seed con credenciales reales versionadas.
 
-La implementación usa `npm run auth:provision -- --email=... --name=...`. El seed de base de datos contiene únicamente catálogos no sensibles.
+La implementación usa `npm run auth:provision -- --email=... --name=...` en una terminal interactiva. Para una base productiva, `npm run db:bootstrap -- --env-file=.env.production` (o `scripts\bootstrap.cmd`) aplica migraciones, el seed de catálogos y hasta dos cuentas leídas de `BOOTSTRAP_USER_*` en un archivo gitignored. El seed de base de datos contiene únicamente catálogos no sensibles. Las contraseñas de bootstrap no se documentan con valores reales, no se pasan como argumentos del shell y no se cargan en el runtime de Next.js.
 
 Las dos cuentas deben ser individuales. No se utilizará una cuenta compartida, aunque ambas tengan exactamente los mismos permisos.
 

@@ -183,7 +183,9 @@ Si un servicio no existe, la operación puede crearlo y seleccionarlo dentro de 
 
 **Estado:** aceptada.
 
-`db:seed` crea únicamente catálogos no sensibles e idempotentes. Las cuentas se crean o actualizan con `auth:provision`, que pide la contraseña sin eco en una terminal interactiva y almacena solo Argon2id. Así, credenciales reales no viven en archivos seed, `.env.example`, argumentos, URLs ni logs.
+`db:seed` crea únicamente catálogos no sensibles e idempotentes. Las cuentas se crean o actualizan con `auth:provision`, que pide la contraseña sin eco en una terminal interactiva y almacena solo Argon2id.
+
+`db:bootstrap` es un camino adicional para una base ya creada: lee un archivo gitignored (`--env-file`), aplica migraciones, el seed y hasta dos cuentas `BOOTSTRAP_USER_*`. Las credenciales reales no viven en archivos seed, `.env.example`, argumentos, URLs, logs ni en el esquema de entorno de Next.js.
 
 ## D-022 — Compras, catálogos auxiliares y demanda perdida ampliada
 
