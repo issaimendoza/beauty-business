@@ -8,8 +8,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  NODE_ENV = "production"
   NETLIFY_NEXT_SKEW_PROTECTION = "true"
+  # Do not set NODE_ENV=production here. npm would skip devDependencies
+  # (@tailwindcss/postcss, TypeScript). next build sets production itself.
 
 # El adaptador de Next.js lo instala Netlify en cada build. No lo fijamos en package.json.
 # Secretos y URLs de producción se configuran en la UI de Netlify, no en este archivo:

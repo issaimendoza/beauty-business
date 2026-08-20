@@ -204,6 +204,7 @@ No reexportar un símbolo a través de otra capa para ocultar una dependencia pr
 - `docker compose down` no debe eliminar volúmenes por defecto. La eliminación de datos requiere un comando separado y explícito.
 - No almacenar secretos en `compose.yaml` ni en `netlify.toml`; usar variables documentadas, archivos locales ignorados por Git y la UI del anfitrión en producción.
 - El build de Netlify no ejecuta migraciones, seed ni bootstrap. Esos comandos siguen siendo explícitos.
+- No definir `NODE_ENV=production` en el ambiente de instalación de Netlify: npm omitiría `devDependencies` del build (Tailwind, TypeScript).
 
 ## Errores
 

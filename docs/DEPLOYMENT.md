@@ -11,8 +11,9 @@ La aplicación Next.js se publica en Netlify. PostgreSQL permanece como sistema 
 - comando: `npm run build`;
 - directorio publicado: `.next`;
 - Node.js 22;
-- `NODE_ENV=production`;
 - protección de skew para no romper sesiones activas al publicar.
+
+No definas `NODE_ENV=production` en `netlify.toml` ni en la UI de Netlify. Si está presente durante `npm install`, npm omite `devDependencies` y el build falla al no encontrar `@tailwindcss/postcss`. `next build` fija producción por su cuenta; las funciones del runtime también corren en producción.
 
 Netlify detecta Next.js 16 y aplica su adaptador OpenNext en cada build. No se fija `@netlify/plugin-nextjs` en `package.json` para recibir correcciones del adaptador.
 
@@ -41,7 +42,7 @@ Tras un dominio propio, actualiza `BETTER_AUTH_URL` a ese origen y vuelve a desp
 
 ## Primera publicación
 
-1. Crea el sitio en Netlify enlazando este repositorio. La rama de producción es la que Netlify deba construir (hoy `master`).
+1. Crea el sitio en Netlify enlazando este repositorio. La rama de producción es la que Netlify deba construir (hoy `main`).
 2. Carga las variables de la tabla anterior. No copies `.env.local`.
 3. Publica. El build no toca el esquema ni crea usuarios.
 4. Desde una máquina de confianza, prepara la base:

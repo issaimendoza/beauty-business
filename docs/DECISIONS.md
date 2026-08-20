@@ -207,7 +207,7 @@ Los agregados de servicios se calculan siempre a nivel de línea para que filtra
 
 **Estado:** aceptada.
 
-La URL pública de la V1 se sirve en Netlify mediante `netlify.toml`: `npm run build`, directorio `.next` y Node.js 22. El adaptador de Next.js lo aplica Netlify en cada build; no se fija en `package.json`.
+La URL pública de la V1 se sirve en Netlify mediante `netlify.toml`: `npm run build`, directorio `.next` y Node.js 22. El adaptador de Next.js lo aplica Netlify en cada build; no se fija en `package.json`. No se define `NODE_ENV=production` en el ambiente de build: npm omitiría `devDependencies` necesarias para compilar (Tailwind, TypeScript); `next build` fija producción por su cuenta.
 
 PostgreSQL no se mueve a Netlify. `DATABASE_URL` apunta a un Postgres externo. El build no ejecuta migraciones, seed ni bootstrap: esos comandos siguen siendo explícitos desde una máquina de confianza, como en D-021.
 
