@@ -1,0 +1,1 @@
+ALTER TABLE "visit_service" ADD COLUMN "duration_minutes_snapshot" integer DEFAULT 0 NOT NULL;

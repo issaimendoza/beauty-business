@@ -1,0 +1,2 @@
+ALTER TABLE "daily_closure" ADD COLUMN "has_missing_sales" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+ALTER TABLE "daily_closure" ADD COLUMN "has_missing_expenses" boolean DEFAULT false NOT NULL;
