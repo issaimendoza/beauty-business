@@ -1,0 +1,16 @@
+# Netlify lee este archivo para construir y publicar el monolito Next.js.
+# PostgreSQL no se aloja aquí: DATABASE_URL debe apuntar a un Postgres externo.
+# No ejecutes migraciones, seed ni bootstrap en este build.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NODE_ENV = "production"
+  NETLIFY_NEXT_SKEW_PROTECTION = "true"
+
+# El adaptador de Next.js lo instala Netlify en cada build. No lo fijamos en package.json.
+# Secretos y URLs de producción se configuran en la UI de Netlify, no en este archivo:
+# DATABASE_URL, BETTER_AUTH_URL, BETTER_AUTH_SECRET, BUSINESS_TIME_ZONE

@@ -202,3 +202,13 @@ Las oportunidades perdidas separan fecha de captura, fecha solicitada, canal, ti
 Los filtros globales se aplican solo a fuentes donde existe la dimensión: colaboradora y servicio filtran líneas realizadas; categoría, producto y proveedor filtran egresos; motivo de pérdida filtra oportunidades. Periodo, método, origen o tipo de cliente se aplican a las fuentes compatibles y la UI explica esta cobertura.
 
 Los agregados de servicios se calculan siempre a nivel de línea para que filtrar una visita multiservicio no incluya importes de otras líneas. El detalle usa paginación keyset por fecha e identificador y vincula el cursor a la fuente y filtros que lo originaron.
+
+## D-024 — Netlify publica Next.js; PostgreSQL sigue fuera
+
+**Estado:** aceptada.
+
+La URL pública de la V1 se sirve en Netlify mediante `netlify.toml`: `npm run build`, directorio `.next` y Node.js 22. El adaptador de Next.js lo aplica Netlify en cada build; no se fija en `package.json`.
+
+PostgreSQL no se mueve a Netlify. `DATABASE_URL` apunta a un Postgres externo. El build no ejecuta migraciones, seed ni bootstrap: esos comandos siguen siendo explícitos desde una máquina de confianza, como en D-021.
+
+Los secretos viven en la UI de Netlify, no en Git. `BETTER_AUTH_URL` es el origen HTTPS público. CI propio y operación administrada de la base permanecen fuera de alcance.

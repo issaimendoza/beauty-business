@@ -77,7 +77,7 @@ npm run db:bootstrap
 npm run db:check
 ```
 
-Los scripts cargan primero `.env.local` y requieren únicamente `DATABASE_URL`; migrar o sembrar catálogos no depende del secreto de autenticación. El seed es idempotente y no crea usuarios ni contiene credenciales. Todos aceptan `--env-file=ruta` para apuntar a otro archivo gitignored, por ejemplo `.env.production`.
+Los scripts cargan primero `.env.local` y requieren únicamente `DATABASE_URL`; migrar o sembrar catálogos no depende del secreto de autenticación. El seed es idempotente y no crea usuarios ni contiene credenciales. Todos aceptan `--env-file=ruta` para apuntar a otro archivo gitignored, por ejemplo `.env.bootstrap`.
 
 Las dos cuentas se aprovisionan por separado en una terminal interactiva:
 
@@ -90,7 +90,7 @@ La contraseña se solicita y confirma sin eco. Repetir el comando para el mismo 
 Para preparar una base ya creada (migraciones, catálogos y hasta dos cuentas leídas del env) sin escribir secretos en la línea de comandos:
 
 ```bat
-npm run db:bootstrap -- --env-file=.env.production
+npm run db:bootstrap -- --env-file=.env.bootstrap
 ```
 
 En CMD también puede usarse `scripts\bootstrap.cmd`. Las variables `BOOTSTRAP_USER_*` solo las lee ese script administrativo; no forman parte de la configuración de runtime de Next.js.
@@ -110,3 +110,5 @@ No se agregarán Redis, RabbitMQ, correo, almacenamiento u observabilidad de for
 ## Pruebas
 
 Las pruebas de integración usan la conexión explícita `TEST_DATABASE_URL`. En CI debe apuntar a una base PostgreSQL aislada; localmente puede apuntar al contenedor de desarrollo cuando se acepte conservar los datos adicionales de prueba.
+
+La publicación de Next.js en Netlify no usa este Compose. El procedimiento está en `DEPLOYMENT.md`.
