@@ -1,0 +1,21 @@
+---
+description: Keep Insights metrics, filters, charts, and drill-downs accurate, traceable, and accessible.
+globs: src/modules/reporting/**/*.{ts,tsx},src/app/**/insights/**/*.{ts,tsx},src/components/**/*chart*.{ts,tsx}
+alwaysApply: false
+---
+
+# Insights and reporting
+
+Read `docs/DOMAIN.md`, `docs/features/REP-001-operational-summary.md`, `docs/features/REP-002-insights.md`, `docs/DESIGN.md`, and the reporting section of `docs/CODING_STANDARDS.md` before changing metrics or Insights UI.
+
+- Reuse one metric definition across cards, charts, comparisons, and drill-downs.
+- Calculate aggregates server-side through reporting query services; do not load raw tables into the browser to calculate metrics.
+- Validate and normalize filters before querying. Apply one configured business timezone to inclusive period boundaries.
+- Derive values from individual events and historical snapshots, never current catalog prices or agreements.
+- Keep gross sales, salon revenue, provider amounts, payment receiver, recorded outflows, and preliminary operating result semantically distinct.
+- Never label preliminary operating result as profit, net income, cash flow, or bank balance.
+- Make every aggregate traceable to paginated source records under the same filters and test that totals reconcile.
+- Distinguish no data from a real zero and declare partial coverage when a source is unavailable.
+- Use semantic chart tokens, legends, units, accessible labels, keyboard/touch interaction, reduced motion, and an equivalent table or list.
+- Test timezone boundaries, inclusive dates, empty periods, division by zero, rounding, combined filters, comparisons, and historical snapshots.
+- Add indexes, caching, materialized views, or analytical storage only after measuring a real bottleneck and documenting invalidation.

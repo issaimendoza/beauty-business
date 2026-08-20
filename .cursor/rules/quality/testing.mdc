@@ -1,0 +1,19 @@
+---
+description: Require proportionate tests for business rules, use cases, persistence adapters, and critical user flows.
+globs: src/**/*.{ts,tsx},tests/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Testing
+
+- Every new or changed business rule requires a focused automated test.
+- Unit-test entities and value objects with deterministic inputs.
+- Test use cases using fakes or stubs for their ports; do not instantiate real infrastructure.
+- Integration-test Drizzle adapters, PostgreSQL constraints, mappings, and transactions that protect behavior.
+- Add Playwright coverage for critical end-to-end flows when the harness exists.
+- Structure tests visibly as Arrange–Act–Assert or Given–When–Then.
+- A bug fix should include a regression test when reasonable.
+- Test useful behavior and boundaries, not merely that a class can be instantiated.
+- Keep test data free of real personal or sensitive information.
+
+Do not weaken production types or visibility only to make testing easier.

@@ -1,0 +1,20 @@
+---
+description: Apply consistent strict TypeScript naming, typing, and maintainability rules.
+globs: **/*.{ts,tsx}
+alwaysApply: true
+---
+
+# TypeScript style
+
+- Keep strict mode enabled.
+- Avoid `any`; use `unknown` plus explicit narrowing.
+- Use `PascalCase` for classes, components, and types; `camelCase` for functions, methods, and variables; `UPPER_SNAKE_CASE` only for true global constants.
+- Use semantic boolean prefixes such as `is`, `has`, `can`, or `should`.
+- Use `kebab-case` filenames except for Next.js special files.
+- Name important limits, percentages, statuses, and conversion factors instead of using magic values.
+- Prefer small functions, early returns, immutable data, and one main responsibility per file.
+- Use type-only imports where appropriate and keep imports grouped consistently.
+- Do not add `eslint-disable`, `@ts-ignore`, unsafe assertions, or casts merely to silence diagnostics.
+- Do not require `I` prefixes or ceremonial base classes.
+
+Document exported domain/public contracts when their semantics are not evident. Do not add `@ai` tags or redundant JSDoc.

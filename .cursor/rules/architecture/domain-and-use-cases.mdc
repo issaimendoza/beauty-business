@@ -1,0 +1,21 @@
+---
+description: Keep domain models pure and application behavior in named use cases.
+globs: src/modules/**/domain/**,src/modules/**/application/**
+alwaysApply: true
+---
+
+# Domain and use cases
+
+- Use the language and invariants in `docs/DOMAIN.md`.
+- Domain code must not import Next.js, React, Zod, Drizzle, database types, or infrastructure code.
+- Protect invariants when constructing or changing domain state.
+- Value objects are immutable.
+- Money never uses floating-point arithmetic.
+- Domain errors express business meaning, not HTTP status codes.
+- Name use cases after intentions such as `RegisterVisit`; do not create generic application CRUD services.
+- Use named input/output types instead of long primitive parameter lists.
+- Inject dependencies through application-owned ports.
+- Keep transactions explicit for write use cases.
+- Do not introduce base entities, serializers, or generic service interfaces before at least two real consumers justify them.
+
+Every new or changed business rule requires an automated test.

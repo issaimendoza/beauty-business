@@ -1,0 +1,24 @@
+---
+description: Centralize and validate environment access while protecting server secrets from the client bundle.
+globs: **/*.{ts,tsx,js,mjs}
+alwaysApply: true
+---
+
+# Environment and secrets
+
+- Application code may read `process.env` only in `src/shared/infrastructure/config/env.ts`.
+- Root configuration executed outside the Next runtime, such as Drizzle config, may read environment variables through one documented loader.
+- Validate configuration with Zod and export typed values.
+- Mark private configuration modules `server-only`.
+- Keep `.env*` files at repository root and never commit secrets.
+- Update `.env.example` whenever a variable is added, renamed, or removed.
+- Treat every `NEXT_PUBLIC_` value as public and frozen at build time. Never expose secrets with that prefix.
+- Client Components must not import private environment configuration.
+- Run every local infrastructure dependency through the repository Docker Compose stack.
+- Keep the Next.js application outside the development Compose stack and run it on the host.
+- Start with PostgreSQL only; add another container only for an approved feature that requires it.
+- Pin image versions, define healthchecks, and use named volumes where persistence is intended.
+- Do not run migrations, seeds, or destructive resets automatically on container startup.
+- Do not use `docker compose down --volumes` as the normal shutdown path.
+
+Do not scatter non-null assertions on `process.env` across the codebase.

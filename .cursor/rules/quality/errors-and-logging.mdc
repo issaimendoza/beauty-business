@@ -1,0 +1,17 @@
+---
+description: Preserve error causes, model expected failures explicitly, and never log sensitive business data.
+globs: **/*.{ts,tsx}
+alwaysApply: true
+---
+
+# Errors and logging
+
+- Treat every caught value as `unknown` and normalize it before reading Error properties.
+- Preserve the original failure with `cause` when wrapping an unexpected error.
+- Do not catch only to rethrow unchanged, swallow failures, or convert every failure into a generic message.
+- Model expected validation and business failures as typed results when the UI must render them.
+- Keep domain errors independent of HTTP and Next.js.
+- Translate infrastructure failures at the adapter/application boundary without exposing database details.
+- Prefer one rich operational event per operation over scattered logs.
+- Never log client names, contact details, free-text notes, receipts, tokens, secrets, raw bodies, or unnecessary financial data.
+- Do not use incidental `console.log` in application code or record the same error at every layer.

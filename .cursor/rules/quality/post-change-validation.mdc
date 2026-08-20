@@ -1,0 +1,20 @@
+---
+description: Run the complete available validation chain after substantive code changes.
+globs: **/*.{ts,tsx,js,jsx,mjs}
+alwaysApply: true
+---
+
+# Post-change validation
+
+After substantive TypeScript or JavaScript changes, run the available commands in order:
+
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
+
+If a script does not exist because `FND-001` has not added it yet, report that fact and run the remaining commands. Fix failures introduced by the change. Never hide failures with ignore comments or flags.
+
+For documentation/rule-only changes, validate Markdown links, formatting, and `git diff --check`; full application checks are optional unless configuration changed.

@@ -1,0 +1,19 @@
+---
+description: Keep Next.js pages, Server Actions, Route Handlers, and Client Components as thin delivery adapters.
+globs: src/app/**,src/modules/**/ui/**
+alwaysApply: false
+---
+
+# Next.js delivery boundaries
+
+- Default to Server Components. Add `'use client'` only at the smallest interactive boundary.
+- Never import server-only modules into the client graph. Props sent to Client Components must be serializable and minimal.
+- Treat every Server Action as an untrusted POST endpoint: validate with Zod, authorize when authentication exists, derive trusted data server-side, invoke a use case, and return a bounded presentation result.
+- Do not rely on client-side parallel Server Action dispatch.
+- Create Route Handlers only for a real HTTP consumer. Use `Request`/`Response` only in delivery code.
+- Pages, actions, and handlers must not query Drizzle or repositories directly.
+- Use resource-oriented, kebab-case URL segments and clear dynamic parameters.
+- Never change an existing URL without explicit authorization; report the breaking change when authorized.
+- Use expected result states for validation/business failures and Next error boundaries for unexpected failures.
+
+Read the relevant guide under `node_modules/next/dist/docs/` before using or changing a Next.js convention.

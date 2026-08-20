@@ -1,0 +1,19 @@
+---
+description: Keep product, domain, architecture, feature specifications, and coding rules synchronized with implementation.
+alwaysApply: true
+---
+
+# Documentation synchronization
+
+Update documentation in the same change when behavior changes:
+
+- Business term or invariant → `docs/DOMAIN.md`.
+- Product scope or non-goal → `docs/PRODUCT.md` and `docs/SCOPE.md`.
+- Architecture or technology boundary → `docs/ARCHITECTURE.md`, `docs/DECISIONS.md`, and applicable rules.
+- Visual, interaction, accessibility, loading, or user-facing error convention → `docs/DESIGN.md`, `docs/DECISIONS.md` when it is a durable decision, and applicable UI rules.
+- Reusable code convention → `docs/CODING_STANDARDS.md` and applicable `.cursor/rules/`.
+- Acceptance criteria → corresponding file in `docs/features/`.
+- Metric, filter, or reporting semantics → `docs/DOMAIN.md`, applicable `docs/features/REP-*.md`, and reporting rules.
+- Complex implementation plan → `docs/plans/active/`, then `docs/plans/completed/` with outcome and agent metrics.
+
+Do not change implementation to contradict documentation silently. If the documentation is wrong, update it explicitly and explain why.

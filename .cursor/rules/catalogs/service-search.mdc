@@ -1,0 +1,21 @@
+---
+description: Implement service catalog listing and selection with stable cursor pagination and accessible remote autocomplete.
+globs: src/modules/services/**/*.{ts,tsx},src/app/**/services/**/*.{ts,tsx},src/modules/operations/ui/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Service catalog discovery
+
+Read `docs/features/CAT-002-services.md`, `docs/features/OPS-001-register-service.md`, the catalog-query section of `docs/ARCHITECTURE.md`, `docs/DESIGN.md`, and the cursor-pagination section of `docs/CODING_STANDARDS.md` before changing service listing or selection.
+
+- Use server-side keyset pagination for services. Do not use `OFFSET` or download the full catalog for client filtering.
+- Use a stable sort ending in a unique `id` tiebreaker.
+- Keep cursors opaque outside infrastructure, validate them, bind their use to the active query, and never interpolate them into SQL.
+- Enforce the documented default and maximum page sizes and return only `items`, `nextCursor`, and `hasNextPage`.
+- Reset pagination when search, filters, or ordering changes.
+- Select and merge services by `id`, preserving a selected service even when it is outside the visible page.
+- Search remotely with a short debounce. Cancel prior requests when supported and always ignore stale responses.
+- Keep inactive services out of new operational captures unless an approved rule explicitly requires them.
+- Preserve the current visit when loading more, searching, or creating a missing service; select a contextual creation after success.
+- Implement keyboard, touch, screen-reader, loading, empty, error, clear, and load-more states.
+- Test repeated sort keys, page boundaries, invalid cursors, special search characters, filter resets, concurrent changes, and out-of-order responses.

@@ -1,0 +1,19 @@
+---
+description: Repository ports are application-owned and Drizzle implementations remain infrastructure details.
+globs: src/modules/**/application/port/repository/**,src/modules/**/infrastructure/persistence/**,src/db/**
+alwaysApply: false
+---
+
+# Repository architecture
+
+For every repository:
+
+1. Define the minimal port in the consuming module's `application/port/repository/`.
+2. Name operations in domain language and include only methods required by use cases.
+3. Implement the port under `infrastructure/persistence/` using Drizzle/PostgreSQL.
+4. Register the implementation only in the composition root.
+5. Add mapping code only when persistence and domain shapes genuinely differ.
+
+Do not expose Drizzle query builders, rows, transactions, column names, or database errors through a port. Do not create universal CRUD/base repositories. Preserve historical references by deactivation when the domain forbids physical deletion.
+
+Integration-test relevant mappings, constraints, and transactions against a test database.

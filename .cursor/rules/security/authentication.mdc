@@ -1,0 +1,21 @@
+---
+description: Protect Beauty Business routes, operations, credentials, and sessions according to FND-002.
+globs: app/**/*.{ts,tsx},src/app/**/*.{ts,tsx},src/modules/auth/**/*.{ts,tsx},src/shared/infrastructure/auth/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Authentication and session security
+
+Read `docs/features/FND-002-basic-access.md`, the authentication section of `docs/ARCHITECTURE.md`, and `docs/CODING_STANDARDS.md` before changing authentication or a protected delivery boundary.
+
+- Deny access by default. Only explicitly documented public routes may bypass session validation.
+- Validate authentication server-side in every protected Server Action, Route Handler, page read, and mutation. Middleware and hidden UI are not authorization controls.
+- Use a maintained authentication/session library compatible with the installed framework. Never invent cryptography, password hashing, or a session protocol.
+- Store only salted adaptive password hashes. Never persist, log, echo, serialize, or version plaintext credentials.
+- Keep session identifiers out of `localStorage`, `sessionStorage`, URLs, logs, and client-visible payloads.
+- Configure production session cookies with `HttpOnly`, `Secure`, explicit `SameSite`, minimum scope, and expiration.
+- Invalidate sessions server-side on logout and revocation.
+- Validate return destinations as safe internal paths; never redirect to an arbitrary user-provided URL.
+- Use generic login failures and progressive temporary throttling without revealing account existence.
+- Never log passwords, password hashes, cookies, session tokens, or raw authentication bodies.
+- Keep both V1 users at the same access level. Do not introduce registration, password recovery, roles, MFA, SSO, or social login without an approved scope change.

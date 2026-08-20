@@ -1,0 +1,16 @@
+---
+description: Protect PostgreSQL schema history and domain invariants in Drizzle migrations.
+globs: drizzle/**,src/db/**,**/infrastructure/persistence/**
+alwaysApply: false
+---
+
+# Database and migrations
+
+- Create a new migration for every schema change. Never rewrite a migration already applied outside a disposable local environment.
+- Keep migrations deterministic, reviewable, and narrowly scoped.
+- Add PostgreSQL constraints for invariants the database can reliably enforce.
+- Represent money with integer minor units or a deliberate decimal type; never floating point.
+- Preserve historical records and references. Prefer active/inactive state over destructive deletion where required by the domain.
+- Use JSONB only for experimental metadata, not understood relationships.
+- Keep Drizzle schema/row types inside infrastructure and map them before crossing application ports.
+- Add integration tests for relevant constraints, mappings, and transaction boundaries.

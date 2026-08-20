@@ -1,0 +1,23 @@
+---
+description: Apply the Beauty Business design system to user-facing UI, styles, interactions, loading states, and error presentation.
+globs: app/**/*.{ts,tsx,css},src/app/**/*.{ts,tsx,css},src/components/**/*.{ts,tsx,css},src/modules/**/ui/**/*.{ts,tsx,css},src/shared/ui/**/*.{ts,tsx,css},**/*.css
+alwaysApply: false
+---
+
+# UI design system
+
+Read `docs/DESIGN.md` completely before planning, reviewing, generating, or modifying user-facing UI.
+
+- Build from shadcn/ui components and shared compositions incrementally; do not create a parallel component system.
+- Theme with semantic CSS variables. Use the approved pink/light palette and keep status colors semantically distinct.
+- Do not invent a logo, brand mark, wordmark, illustration, or slogan. Keep the optional future brand slot structurally supported.
+- Pair actions, menus, and navigation with a consistent icon and a visible label when space permits.
+- Every form question must expose accessible contextual help through the shared `Info` pattern. It must work with hover, focus, click, touch, keyboard, and screen readers.
+- Define subtle feedback for hover, focus, press, selection, opening, closing, and navigation. Respect `prefers-reduced-motion`.
+- Every asynchronous operation must expose an appropriate loading state and prevent accidental duplicate submission.
+- Normalize and interpret user-facing errors. Never render HTTP status codes, raw exceptions, stack traces, database details, or internal identifiers other than an intentionally safe incident reference.
+- Preserve user input on recoverable failures and provide a concrete recovery action.
+- Cover the applicable default, hover, focus-visible, active, selected, disabled, loading, error, and success states.
+- Meet the responsive and WCAG 2.2 AA acceptance criteria in `docs/DESIGN.md`.
+
+If implementation reveals a missing reusable pattern, document it in `docs/DESIGN.md` and update this rule when enforcement changes.

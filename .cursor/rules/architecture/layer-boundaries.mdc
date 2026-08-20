@@ -1,0 +1,20 @@
+---
+description: Enforce inward-only dependencies for the Beauty Business modular hexagonal architecture.
+alwaysApply: true
+---
+
+# Layer boundaries
+
+Read `docs/ARCHITECTURE.md` and `docs/CODING_STANDARDS.md` before changing application code.
+
+## Dependency direction
+
+- `domain/` may depend only on its own domain and pure shared domain primitives.
+- `application/` may depend on domain and application-owned ports.
+- `infrastructure/` may depend on domain/application to implement ports, but never on UI.
+- `ui/` and `src/app/` may invoke application use cases and use presentation contracts, but never import Drizzle, DB connections, repository implementations, or infrastructure adapters.
+- Only `src/shared/infrastructure/composition/` may wire concrete dependencies across all layers.
+
+Do not hide a forbidden dependency behind a re-export. Do not move business logic into a page, Server Action, Route Handler, repository, schema, or component.
+
+Create only the folders and ports required by the current vertical; do not scaffold empty layers.
