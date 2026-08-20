@@ -112,6 +112,7 @@ src/
 drizzle/                 # migraciones versionadas
 scripts/                 # migración, seed, bootstrap y aprovisionamiento
 tests/                   # dominio, aplicación, integración, componentes y E2E
+netlify.toml             # cómo Netlify construye y publica Next.js
 ```
 
 Cada módulo crece solo cuando existe comportamiento real:
@@ -319,6 +320,10 @@ packages/
 
 La API separada podría usar NestJS u otra tecnología Node/TypeScript, pero no forma parte de la V1.
 
+## Publicación
+
+Next.js se publica en Netlify según `netlify.toml`. PostgreSQL permanece externo. Las migraciones, el seed y el aprovisionamiento no corren en el build; el procedimiento está en `DEPLOYMENT.md`.
+
 ## Infraestructura diferida
 
-La V1 incluye únicamente el acceso básico de `FND-002`. Autenticación avanzada, roles, CI, despliegue cloud, monorepo, microservicios y servicios administrados permanecen diferidos. Cada elemento se incorpora mediante una decisión explícita cuando aporte valor verificable.
+La V1 incluye el acceso básico de `FND-002` y la publicación de Next.js en Netlify. Autenticación avanzada, roles, CI propio, monorepo, microservicios y un PostgreSQL administrado como producto del repositorio permanecen diferidos. Cada elemento se incorpora mediante una decisión explícita cuando aporte valor verificable.

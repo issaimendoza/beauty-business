@@ -202,7 +202,8 @@ No reexportar un símbolo a través de otra capa para ocultar una dependencia pr
 - No fijar `container_name`; permitir que Compose aísle proyectos y evite colisiones.
 - No ejecutar migraciones, seeds ni resets destructivos automáticamente al iniciar contenedores.
 - `docker compose down` no debe eliminar volúmenes por defecto. La eliminación de datos requiere un comando separado y explícito.
-- No almacenar secretos en `compose.yaml`; usar variables documentadas y archivos locales ignorados por Git.
+- No almacenar secretos en `compose.yaml` ni en `netlify.toml`; usar variables documentadas, archivos locales ignorados por Git y la UI del anfitrión en producción.
+- El build de Netlify no ejecuta migraciones, seed ni bootstrap. Esos comandos siguen siendo explícitos.
 
 ## Errores
 

@@ -13,6 +13,7 @@ Esta carpeta convierte las decisiones de producto y desarrollo en la fuente de v
 | [ARCHITECTURE.md](ARCHITECTURE.md) | ¿Cómo construiremos la solución? |
 | [DESIGN.md](DESIGN.md) | ¿Cómo debe verse, responder y explicar sus estados la interfaz? |
 | [DEVELOPMENT_ENVIRONMENT.md](DEVELOPMENT_ENVIRONMENT.md) | ¿Cómo se levantan las dependencias locales? |
+| [DEPLOYMENT.md](DEPLOYMENT.md) | ¿Cómo se publica Next.js en Netlify? |
 | [CODING_STANDARDS.md](CODING_STANDARDS.md) | ¿Qué reglas debe cumplir el código? |
 | [HEXAGONAL_ADAPTATION.md](HEXAGONAL_ADAPTATION.md) | ¿Qué reglas del template hexagonal se adoptaron y cómo? |
 | [DECISIONS.md](DECISIONS.md) | ¿Qué alternativas se evaluaron y qué se decidió? |

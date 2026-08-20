@@ -132,7 +132,9 @@ Motivos iniciales: sin disponibilidad, precio, cancelación, no-show, sin respue
 - Microservicios, múltiples repositorios o monorepo.
 - Autenticación compleja, roles y permisos diferenciados.
 - Registro público, recuperación de contraseña, MFA, SSO o acceso social.
-- CI, despliegue cloud y operación productiva antes de validar la primera vertical local.
+- CI propio (lint, typecheck y pruebas fuera del build de Netlify).
+- PostgreSQL, copias de seguridad y monitoreo como producto del repositorio.
+- Migraciones, seed o bootstrap automáticos al publicar.
 
 ## Suposiciones actuales
 

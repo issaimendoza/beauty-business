@@ -80,7 +80,7 @@ El contenedor nunca ejecuta migraciones ni seeds automáticamente. Los archivos 
 
 ## Bootstrap de una base existente
 
-Para una base productiva, copia `.env.example` a `.env.production` (gitignored), pon `DATABASE_URL` y las dos cuentas, y desde CMD:
+Para una base productiva, copia `.env.example` a `.env.bootstrap` (gitignored), pon `DATABASE_URL` y las dos cuentas, y desde CMD:
 
 ```bat
 scripts\bootstrap.cmd
@@ -89,10 +89,14 @@ scripts\bootstrap.cmd
 Equivale a:
 
 ```bat
-npm run db:bootstrap -- --env-file=.env.production
+npm run db:bootstrap -- --env-file=.env.bootstrap
 ```
 
-El comando aplica migraciones, el seed de catálogos y crea o actualiza hasta dos cuentas. Las contraseñas viven solo en ese archivo local; no se imprimen ni se pasan como argumentos. `migrate`, `seed` y `auth:provision` también aceptan `--env-file=...`.
+El comando aplica migraciones, el seed de catálogos y crea o actualiza hasta dos cuentas. Las contraseñas viven solo en ese archivo local; no se imprimen ni se pasan como argumentos. No uses `.env.production` para este archivo: Next.js lo carga en el build. `migrate`, `seed` y `auth:provision` también aceptan `--env-file=...`.
+
+## Publicación en Netlify
+
+`netlify.toml` indica a Netlify que construya con `npm run build`, publique `.next` y use Node.js 22. PostgreSQL no se aloja en Netlify: configura `DATABASE_URL`, `BETTER_AUTH_URL`, `BETTER_AUTH_SECRET` y `BUSINESS_TIME_ZONE` en la UI del sitio. El build no migra ni crea usuarios; eso se hace desde una máquina de confianza con `db:bootstrap`. El procedimiento completo está en [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## Validación
 

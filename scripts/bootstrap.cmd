@@ -3,7 +3,7 @@ setlocal
 cd /d "%~dp0.."
 
 if "%~1"=="" (
-  set "ENV_FILE=.env.production"
+  set "ENV_FILE=.env.bootstrap"
 ) else (
   set "ENV_FILE=%~1"
 )

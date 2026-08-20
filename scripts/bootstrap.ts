@@ -13,7 +13,7 @@ import {
 async function main() {
   if (!scriptArgument("env-file")) {
     throw new Error(
-      "Indica el archivo de entorno: npm run db:bootstrap -- --env-file=.env.production",
+      "Indica el archivo de entorno: npm run db:bootstrap -- --env-file=.env.bootstrap",
     );
   }
 
